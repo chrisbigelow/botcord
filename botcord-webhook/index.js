@@ -101,17 +101,17 @@ function handleMessage(sender_psid, received_message) {
         "text": "Thanks for the image!",
         "quick_replies":[
           {
-            "content_type":"text",
+            "content_type":"postback",
             "title":"You are Welcome",
             "payload":"You are Welcome",
           },
           {
-            "content_type":"text",
+            "content_type":"postback",
             "title":"Ok",
             "payload":"Ok",
           },
           {
-            "content_type":"text",
+            "content_type":"postback",
             "title":"Shut It",
             "payload":"Shut It"
           }
