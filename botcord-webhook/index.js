@@ -116,10 +116,9 @@ function handleMessage(sender_psid, received_message) {
             "payload":"Shut It"
           }
         ]
-      }
-    };
-  
-  }   
+      };
+  }
+ 
   
   // Sends the response message
   callSendAPI(sender_psid, response);
