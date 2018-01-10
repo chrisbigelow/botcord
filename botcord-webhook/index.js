@@ -103,17 +103,17 @@ function handleMessage(sender_psid, received_message) {
           {
             "content_type":"text",
             "title":"You're Welcome",
-            "payload":"<POSTBACK_PAYLOAD>",
+            "payload":"You're Welcom",
           },
           {
             "content_type":"text",
             "title":"Ok",
-            "payload":"<POSTBACK_PAYLOAD>",
+            "payload":"Ok",
           },
           {
             "content_type":"text",
             "title":"Shut It",
-            "payload":"<POSTBACK_PAYLOAD>"
+            "payload":"Shut It"
           }
         ]
       }
