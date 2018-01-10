@@ -93,7 +93,34 @@ function handleMessage(sender_psid, received_message) {
     response = {
       "text": `You sent the message: "${received_message.text}". Now send me an image!`
     };
-  }  
+  } else if (received_message.attachments) {
+  
+    // Gets the URL of the message attachment
+    let attachment_url = received_message.attachments[0].payload.url;
+    response = {
+      "message":{
+        "text": "Thanks for the image!",
+        "quick_replies":[
+          {
+            "content_type":"text",
+            "title":"You're Welcome",
+            "payload":"<POSTBACK_PAYLOAD>",
+          },
+          {
+            "content_type":"text",
+            "title":"Ok",
+            "payload":"<POSTBACK_PAYLOAD>",
+          },
+          {
+            "content_type":"text",
+            "title":"Shut It",
+            "payload":"<POSTBACK_PAYLOAD>"
+          }
+        ]
+      }
+    };
+  
+  }   
   
   // Sends the response message
   callSendAPI(sender_psid, response);
