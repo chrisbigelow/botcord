@@ -102,8 +102,8 @@ function handleMessage(sender_psid, received_message) {
         "quick_replies":[
           {
             "content_type":"text",
-            "title":"You're Welcome",
-            "payload":"You're Welcom",
+            "title":"You are Welcome",
+            "payload":"You are Welcome",
           },
           {
             "content_type":"text",
@@ -127,6 +127,19 @@ function handleMessage(sender_psid, received_message) {
 
 // Handles messaging_postbacks events
 function handlePostback(sender_psid, received_postback) {
+  let response;
+  
+  // Get the payload for the postback
+  let payload = received_postback.payload;
+
+  // Set the response based on the postback payload
+  if (payload === 'You are Welcome') {
+    response = { "text": "Thanks!" };
+  } else if (payload === 'Shut It') {
+    response = { "text": "hey dont be mean!" };
+  }
+  // Send the message to acknowledge the postback
+  callSendAPI(sender_psid, response);
 
 }
 
