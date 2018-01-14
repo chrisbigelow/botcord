@@ -87,11 +87,12 @@ function handleMessage(sender_psid, received_message) {
   let response;
 
   // Check if the message contains text
-  if (received_message.text) {    
+  if (received_message.text) { 
 
+    let userName = getName(sender_psid);
     // Create the payload for a basic text message
     response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an image!`
+      "text": `Thanks, You sent the message: "${received_message.text}". Now send me an image!`
     };
   } else if (received_message.attachments) {
   
@@ -101,17 +102,17 @@ function handleMessage(sender_psid, received_message) {
         "text": "Thanks for the image!",
         "quick_replies":[
           {
-            "content_type":"postback",
+            "content_type":"text",
             "title":"You are Welcome",
             "payload":"You are Welcome",
           },
           {
-            "content_type":"postback",
+            "content_type":"text",
             "title":"Ok",
             "payload":"Ok",
           },
           {
-            "content_type":"postback",
+            "content_type":"text",
             "title":"Shut It",
             "payload":"Shut It"
           }
@@ -170,3 +171,22 @@ function callSendAPI(sender_psid, response) {
   
   
 }
+
+
+
+function getName(sender_psid) {
+
+  request({
+    "uri": "https://graph.facebook.com/v2.6/" + sender_psid + "?access_token=" + PAGE_ACCESS_TOKEN,
+    "method": "GET",
+  }, (err, res, body) => {
+    if (!err) {
+      console.log(res);
+      return res;
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  }); 
+
+}
+
