@@ -92,7 +92,7 @@ function handleMessage(sender_psid, received_message) {
     let userName = getName(sender_psid);
     // Create the payload for a basic text message
     response = {
-      "text": `Thanks, You sent the message: "${received_message.text}". Now send me an image!`
+      "text": `Thanks ${userName}, You sent the message: "${received_message.text}". Now send me an image!`
     };
   } else if (received_message.attachments) {
   
@@ -181,8 +181,7 @@ function getName(sender_psid) {
     "method": "GET",
   }, (err, res, body) => {
     if (!err) {
-      console.log(res);
-      return res;
+      return res.body.first_name;
     } else {
       console.error("Unable to send message:" + err);
     }
